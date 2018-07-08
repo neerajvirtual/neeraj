@@ -18,13 +18,13 @@ public class AOP {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@AfterReturning(pointcut = "execution(* com.demo..*(..))", returning = "result")
-	public void logBefore(JoinPoint joinPoint, Object result) {
-		logger.debug("going into the method: "+joinPoint.getSignature().getName());
-		logger.debug("get class name "+joinPoint.getTarget().getClass().getName());
-		logger.debug("method return data :", result.toString());
-		logger.debug("printing arguments"+ Arrays.toString(joinPoint.getArgs()));
-	}
+//	@AfterReturning(pointcut = "execution(* com.demo..*(..))", returning = "result")
+//	public void logBefore(JoinPoint joinPoint, Object result) {
+//		logger.debug("going into the method: "+joinPoint.getSignature().getName());
+//		logger.debug("get class name "+joinPoint.getTarget().getClass().getName());
+//		logger.debug("method return data :", result.toString());
+//		logger.debug("printing arguments"+ Arrays.toString(joinPoint.getArgs()));
+//	}
 	
 	@Before("execution(* com.demo..*(..))")
 	public void logBefore(JoinPoint joinPoint) {
