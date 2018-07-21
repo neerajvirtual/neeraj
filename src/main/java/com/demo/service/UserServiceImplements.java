@@ -1,7 +1,5 @@
 package com.demo.service;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +28,6 @@ public class UserServiceImplements implements UserService {
 	@Override
 	public void saveStudent(Student student) {
 		userdao.saveStudent(student);
-	}
-	
-	@Override
-	public List<Student> getAllUsers() {
-		return userdao.getAllUsers();
 	}
 	
 }

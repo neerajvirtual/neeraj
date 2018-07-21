@@ -10,30 +10,37 @@ import javax.persistence.Table;
 @Table(name = "address")
 public class Address {
 
+	private long addressId;
+	private String street;
+	private long userid;
+
 	@Id
 	@GeneratedValue
-	@Column(name = "address_id")
-	private long addressId;
-	
-	@Column(name = "address_street", nullable = false, length=250)
-	private String street;
-
+	@Column(name = "ADDRESS_ID")
 	public long getAddressId() {
-		return addressId;
+		return this.addressId;
 	}
 
 	public void setAddressId(long addressId) {
 		this.addressId = addressId;
 	}
-
+	
+	@Column(name = "ADDRESS_STREET", nullable = false, length=250)
 	public String getStreet() {
-		return street;
+		return this.street;
 	}
 
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
+	@Column(name = "userid")
+	public long getUserid() {
+		return this.userid;
+	}
 
+	public void setUserid(long userid) {
+		this.userid = userid;
+	}
 
 }

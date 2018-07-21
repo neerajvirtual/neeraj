@@ -1,16 +1,9 @@
 package com.demo.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.demo.model.Address;
@@ -37,15 +30,5 @@ public class UserDaoImplement implements UserDao {
 	public void saveStudent(Student student) {
 		Session session = entityManager.unwrap(Session.class);
 		session.save(student);
-	}
-
-	@Override
-	public List<Student> getAllUsers() {		
-		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Student> criteriaQuery = queryBuilder.createQuery(Student.class);
-		Root<Student> entityRoot = criteriaQuery.from(Student.class);
-		criteriaQuery.select(entityRoot);
-		List<Student> list = entityManager.createQuery(criteriaQuery).getResultList();
-		return list;
 	}
 }

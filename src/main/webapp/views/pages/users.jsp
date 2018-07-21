@@ -15,7 +15,6 @@
   <legend>TestForm:</legend>
   Name: <input name="studentName" type="text"><br>
   Address: <input name="studentAddress.street" type="text"><br>
-  dateTime: <input name="dateTime" type="text" value="11.07.2011 05:05:05"><br>
   <input type="submit" value="submit">
  </fieldset>
 </form>
