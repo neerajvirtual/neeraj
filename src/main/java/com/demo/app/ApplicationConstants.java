@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.app;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

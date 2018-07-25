@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,15 +13,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EntityScan(basePackageClasses = {UserModel.class, ContactModel.class})
 @EnableJpaRepositories(basePackages = "com.demo.dao")
 @EntityScan(basePackages = "com.demo.model")
-public class DemoApplication extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 	
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(DemoApplication.class);
+        return application.sources(Application.class);
     }
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 	
 }
