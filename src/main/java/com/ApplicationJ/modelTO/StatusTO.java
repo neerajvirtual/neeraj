@@ -29,10 +29,5 @@ public class StatusTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "Status [status_id=" + status_id + ", name=" + name + ", status=" + status + "]";
-	}
 	
 }

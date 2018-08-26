@@ -1,6 +1,7 @@
 package com.ApplicationJ.modelBO;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,7 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,6 +47,26 @@ public class UsersBO{
 	@ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "status_id" , nullable=false)
 	private StatusBO status;
+	
+	@ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "food_type_id" , nullable=false)
+	private FoodTypeBO foodtype;
+	
+	@Column(name = "updated_at", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
+	private Date updatedAt;
+
+	@Column(name = "updated_by")
+	private Integer updatedBy;
+
+	@Column(name = "created_at", nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
+	private Date createdAt;
+
+	@Column(name = "created_by")
+	private Integer createdBy;
 
 	public Integer getId() {
 		return id;
@@ -83,10 +108,44 @@ public class UsersBO{
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "UsersBO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", status="
-				+ status + "]";
+	public FoodTypeBO getFoodtype() {
+		return foodtype;
+	}
+
+	public void setFoodtype(FoodTypeBO foodtype) {
+		this.foodtype = foodtype;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	
 }

@@ -1,5 +1,14 @@
 package com.ApplicationJ.modelTO;
 
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 public class UsersTO {
 
 	private Integer id;
@@ -7,6 +16,10 @@ public class UsersTO {
 	private String email;
 	private String password;
 	private StatusTO status;
+	private Date updatedAt;
+	private Integer updatedBy;
+	private Date createdAt;
+	private Integer createdBy;
 
 	public Integer getId() {
 		return id;
@@ -47,11 +60,37 @@ public class UsersTO {
 	public void setStatus(StatusTO status) {
 		this.status = status;
 	}
+	
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
 
-	@Override
-	public String toString() {
-		return "UsersBO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", status="
-				+ status + "]";
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	
 }

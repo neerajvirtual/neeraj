@@ -41,6 +41,7 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersTO getUsersById(int id) {
 		UsersBO obj= usersdao.getUserById(id);
+		System.out.println("user data fetched "+obj.getFoodtype().getFood().get(0));
 		return modelMapper.map(obj, UsersTO.class);
 	}
 	
