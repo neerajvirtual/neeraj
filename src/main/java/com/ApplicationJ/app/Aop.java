@@ -1,4 +1,4 @@
-package com.demo.app;
+package com.ApplicationJ.app;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,7 +13,7 @@ public class Aop {
 
 	private static final Logger logger = LoggerFactory.getLogger(Aop.class);
 	
-	@Before("execution(* com.demo..*(..))")
+	@Before("execution(* com.ApplicationJ..*(..))")
 	public void logBefore(JoinPoint joinPoint) {
 		logger.debug("BeforeExecution: "+joinPoint.getSignature().getName());
 	}

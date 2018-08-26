@@ -1,4 +1,4 @@
-package com.demo.modelTO;
+package com.ApplicationJ.modelTO;
 
 public class StatusTO {
 

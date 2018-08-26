@@ -1,4 +1,4 @@
-package com.demo.service;
+package com.ApplicationJ.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.dao.UsersDao;
-import com.demo.modelBO.UsersBO;
-import com.demo.modelTO.UsersTO;
+import com.ApplicationJ.dao.UsersDao;
+import com.ApplicationJ.modelBO.UsersBO;
+import com.ApplicationJ.modelTO.UsersTO;
 
 @Transactional
 @Service
@@ -36,6 +36,12 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersBO addUser(UsersBO userbo) {
 		return usersdao.addUser(userbo);
+	}
+
+	@Override
+	public UsersTO getUsersById(int id) {
+		UsersBO obj= usersdao.getUserById(id);
+		return modelMapper.map(obj, UsersTO.class);
 	}
 	
 }

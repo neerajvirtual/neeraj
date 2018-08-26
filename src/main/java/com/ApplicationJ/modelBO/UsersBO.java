@@ -1,4 +1,4 @@
-package com.demo.modelBO;
+package com.ApplicationJ.modelBO;
 
 import java.io.Serializable;
 

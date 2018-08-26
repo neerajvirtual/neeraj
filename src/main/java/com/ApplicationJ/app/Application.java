@@ -1,4 +1,4 @@
-package com.demo.app;
+package com.ApplicationJ.app;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
@@ -11,9 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.demo"})
-@EnableJpaRepositories(basePackages = "com.demo.dao")
-@EntityScan(basePackages = "com.demo.modelBO")
+@ComponentScan({"com.ApplicationJ"})
+@EnableJpaRepositories(basePackages = "com.ApplicationJ.dao")
+@EntityScan(basePackages = "com.ApplicationJ.modelBO")
 public class Application extends SpringBootServletInitializer {
 	
     @Override
@@ -29,5 +29,4 @@ public class Application extends SpringBootServletInitializer {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-	
 }
