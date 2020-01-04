@@ -32,4 +32,6 @@ public interface UsersService {
 
 	UsersBO updateUser(UsersBO userbo);
 
+	List<UsersTO> getActiveUsersNameEmail();
+
 }

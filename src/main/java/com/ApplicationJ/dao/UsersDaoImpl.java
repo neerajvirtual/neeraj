@@ -112,4 +112,18 @@ public class UsersDaoImpl implements UsersDao {
 		return results;
 	}
 
+	@Override
+	public List<UsersBO> getTestlList() {
+		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<UsersBO> criteriaQuery = queryBuilder.createQuery(UsersBO.class);
+		Root<UsersBO> entityRoot = criteriaQuery.from(UsersBO.class);
+		ArrayList<Predicate> searchFilter = new ArrayList<>();
+		Path<String> e1 = entityRoot.get("status");
+		searchFilter.add(queryBuilder.and(queryBuilder.equal(e1,1)));
+		criteriaQuery.where(searchFilter.toArray(new Predicate[searchFilter.size()]));
+		criteriaQuery.multiselect(entityRoot.get("id"), entityRoot.get("name"), entityRoot.get("email"));
+		List<UsersBO> results = entityManager.createQuery(criteriaQuery).getResultList();
+		return results;
+	}
+
 }

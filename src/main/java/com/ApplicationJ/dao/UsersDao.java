@@ -25,4 +25,6 @@ public interface UsersDao {
 
 	UsersBO updateUser(UsersBO userbo);
 
+	List<UsersBO> getTestlList();
+
 }

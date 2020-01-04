@@ -114,7 +114,17 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Override
 	public List<UsersTO> getTestList() {
-		List<UsersTO> usersToList = new ArrayList();
+		List<UsersTO> usersToList = new ArrayList<UsersTO>();
+		List<UsersBO> usersBoList= usersdao.getTestlList();
+		for (UsersBO usersBO : usersBoList) {
+			usersToList.add(modelMapper.map(usersBO, UsersTO.class));
+		}
+		return usersToList;
+	}
+
+	@Override
+	public List<UsersTO> getActiveUsersNameEmail() {
+		List<UsersTO> usersToList = new ArrayList<UsersTO>();
 		List<UsersBO> usersBoList= usersdao.getActiveUserNameEmailList();
 		for (UsersBO usersBO : usersBoList) {
 			usersToList.add(modelMapper.map(usersBO, UsersTO.class));

@@ -86,6 +86,13 @@ public class UsersRestController {
 		return new ResponseEntity<ResponseTO>(response, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/activeUsersNameEmail", method = RequestMethod.GET)
+	public ResponseEntity<?> getActiveUsersNameEmail() throws Exception {
+		List<UsersTO> list = usersservice.getActiveUsersNameEmail();
+		responseBuilder(200, "Active Users Name, Email List Got Successfully", "users", Constant.USR001, list);
+		return new ResponseEntity<ResponseTO>(response, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public ResponseEntity<?> getTest() throws Exception {
 		List<UsersTO> list = usersservice.getTestList();
