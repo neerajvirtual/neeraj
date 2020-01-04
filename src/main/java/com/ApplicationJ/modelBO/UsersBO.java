@@ -1,6 +1,5 @@
 package com.ApplicationJ.modelBO;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -29,6 +28,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 public class UsersBO{
+	
+	public UsersBO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UsersBO(Integer id, String name, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

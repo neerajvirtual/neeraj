@@ -10,6 +10,7 @@
 
 	<name>ApplicationJ</name>
 	<description>ApplicationJ project for Spring Boot</description>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

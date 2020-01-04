@@ -16,6 +16,7 @@ public class UsersTO {
 	private String email;
 	private String password;
 	private StatusTO status;
+	private FoodTypeTO foodtype;
 	private Date updatedAt;
 	private Integer updatedBy;
 	private Date createdAt;
@@ -61,6 +62,14 @@ public class UsersTO {
 		this.status = status;
 	}
 	
+	public FoodTypeTO getFoodtype() {
+		return foodtype;
+	}
+
+	public void setFoodtype(FoodTypeTO foodtype) {
+		this.foodtype = foodtype;
+	}
+
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}

@@ -1,6 +1,5 @@
 package com.ApplicationJ.modelBO;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +28,7 @@ public class FoodTypeBO{
 	@Column(name="status")
 	private boolean status;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_id", referencedColumnName = "food_type_id", insertable = false, updatable = false, nullable = true)
 	private List<FoodBO> food;
 

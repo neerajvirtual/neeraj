@@ -1,18 +1,22 @@
 package com.ApplicationJ.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
+import com.ApplicationJ.modelBO.FoodBO;
+import com.ApplicationJ.modelBO.FoodTypeBO;
+import com.ApplicationJ.modelBO.StatusBO;
 import com.ApplicationJ.modelBO.UsersBO;
 
 @Repository
@@ -38,6 +42,15 @@ public class UsersDaoImpl implements UsersDao {
 		entityManager.clear();
 		return userbo; 
 	}
+	
+	@Override
+	public UsersBO updateUser(UsersBO userbo) {
+		Session session = entityManager.unwrap(Session.class);
+		session.merge(userbo);
+		entityManager.flush();
+		entityManager.clear();
+		return userbo; 
+	}
 
 	@Override
 	public UsersBO getUserById(int id) {
@@ -50,6 +63,53 @@ public class UsersDaoImpl implements UsersDao {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public List<StatusBO> getStatusList() {
+		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<StatusBO> criteriaQuery = queryBuilder.createQuery(StatusBO.class);
+		Root<StatusBO> entityRoot = criteriaQuery.from(StatusBO.class);
+		Predicate condition = queryBuilder.and(queryBuilder.equal(entityRoot.get("status"),true));
+		criteriaQuery.where(condition);
+		List<StatusBO> statusList = entityManager.createQuery(criteriaQuery).getResultList();
+		return statusList;
+	}
+
+	@Override
+	public List<FoodTypeBO> getFoodTypeList() {
+		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<FoodTypeBO> criteriaQuery = queryBuilder.createQuery(FoodTypeBO.class);
+		Root<FoodTypeBO> entityRoot = criteriaQuery.from(FoodTypeBO.class);
+		Predicate condition = queryBuilder.and(queryBuilder.equal(entityRoot.get("status"),true));
+		criteriaQuery.where(condition);
+		List<FoodTypeBO> foodtypeList = entityManager.createQuery(criteriaQuery).getResultList();
+		return foodtypeList;
+	}
+
+	@Override
+	public List<FoodBO> getFoodList() {
+		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<FoodBO> criteriaQuery = queryBuilder.createQuery(FoodBO.class);
+		Root<FoodBO> entityRoot = criteriaQuery.from(FoodBO.class);
+		Predicate condition = queryBuilder.and(queryBuilder.equal(entityRoot.get("status"),true),queryBuilder.equal(entityRoot.get("type_id"),1));
+		criteriaQuery.where(condition);
+		List<FoodBO> foodList = entityManager.createQuery(criteriaQuery).getResultList();
+		return foodList;
+	}
+	
+	@Override
+	public List<UsersBO> getActiveUserNameEmailList() {		
+		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<UsersBO> criteriaQuery = queryBuilder.createQuery(UsersBO.class);
+		Root<UsersBO> entityRoot = criteriaQuery.from(UsersBO.class);
+		ArrayList<Predicate> searchFilter = new ArrayList<>();
+		Path<String> e1 = entityRoot.get("status");
+		searchFilter.add(queryBuilder.and(queryBuilder.equal(e1,1)));
+		criteriaQuery.where(searchFilter.toArray(new Predicate[searchFilter.size()]));
+		criteriaQuery.multiselect(entityRoot.get("id"), entityRoot.get("name"), entityRoot.get("email"));
+		List<UsersBO> results = entityManager.createQuery(criteriaQuery).getResultList();
+		return results;
 	}
 
 }

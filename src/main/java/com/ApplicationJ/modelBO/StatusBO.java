@@ -1,6 +1,5 @@
 package com.ApplicationJ.modelBO;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,6 +49,9 @@ public class StatusBO{
 		this.status = status;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "StatusBO [status_id=" + status_id + ", name=" + name + ", status=" + status + "]";
+	}
 	
 }
