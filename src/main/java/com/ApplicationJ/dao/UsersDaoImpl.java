@@ -29,7 +29,6 @@ public class UsersDaoImpl implements UsersDao {
 	public List<UsersBO> getActiveUsers() {
 		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<UsersBO> criteriaQuery = queryBuilder.createQuery(UsersBO.class);
-		Root<UsersBO> entityRoot = criteriaQuery.from(UsersBO.class);
 		List<UsersBO> userList = entityManager.createQuery(criteriaQuery).getResultList();
 		return userList;
 	}
@@ -44,25 +43,25 @@ public class UsersDaoImpl implements UsersDao {
 	}
 	
 	@Override
+	public UsersBO getUserById(int id) {
+		Session session = entityManager.unwrap(Session.class);
+		@SuppressWarnings("unchecked")
+		List<UsersBO> list = (List<UsersBO>) session
+		.createQuery("FROM UsersBO as a where a.id=" + id + "").list();
+		if (list.size() > 0) {
+			return list.get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
 	public UsersBO updateUser(UsersBO userbo) {
 		Session session = entityManager.unwrap(Session.class);
 		session.merge(userbo);
 		entityManager.flush();
 		entityManager.clear();
 		return userbo; 
-	}
-
-	@Override
-	public UsersBO getUserById(int id) {
-		Session session = entityManager.unwrap(Session.class);
-		@SuppressWarnings("unchecked")
-		List<UsersBO> list = (List<UsersBO>) session
-				.createQuery("FROM UsersBO as a where a.id=" + id + "").list();
-		if (list.size() > 0) {
-			return list.get(0);
-		} else {
-			return null;
-		}
 	}
 
 	@Override

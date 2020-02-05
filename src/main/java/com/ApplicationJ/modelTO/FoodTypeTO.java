@@ -1,14 +1,13 @@
 package com.ApplicationJ.modelTO;
 
 import java.util.List;
-import com.ApplicationJ.modelBO.FoodBO;
 
 public class FoodTypeTO {
 
 	private Integer food_type_id;
 	private String name;
 	private boolean status;
-	private List<FoodBO> food;
+	private List<FoodTO> food;
 	public Integer getFood_type_id() {
 		return food_type_id;
 	}
@@ -27,10 +26,10 @@ public class FoodTypeTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public List<FoodBO> getFood() {
+	public List<FoodTO> getFood() {
 		return food;
 	}
-	public void setFood(List<FoodBO> food) {
+	public void setFood(List<FoodTO> food) {
 		this.food = food;
 	}
 	

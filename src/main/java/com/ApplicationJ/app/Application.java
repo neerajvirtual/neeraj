@@ -11,20 +11,20 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.ApplicationJ"})
+@ComponentScan({ "com.ApplicationJ" })
 @EnableJpaRepositories(basePackages = "com.ApplicationJ.dao")
 @EntityScan(basePackages = "com.ApplicationJ.modelBO")
 public class Application extends SpringBootServletInitializer {
-	
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
-	
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();

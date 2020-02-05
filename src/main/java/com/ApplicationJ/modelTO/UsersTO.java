@@ -2,13 +2,6 @@ package com.ApplicationJ.modelTO;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 public class UsersTO {
 
 	private Integer id;

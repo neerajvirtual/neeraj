@@ -1,14 +1,12 @@
 package com.ApplicationJ.modelTO;
 
-import com.ApplicationJ.modelBO.FoodTypeBO;
-
 public class FoodTO {
 
 	private Integer food_id;
 	private String name;
 	private String description;
 	private boolean status;
-	private FoodTypeBO food_type;
+	private FoodTypeTO food_type;
 	private Integer type_id;
 	public Integer getFood_id() {
 		return food_id;
@@ -34,10 +32,10 @@ public class FoodTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public FoodTypeBO getFood_type() {
+	public FoodTypeTO getFood_type() {
 		return food_type;
 	}
-	public void setFood_type(FoodTypeBO food_type) {
+	public void setFood_type(FoodTypeTO food_type) {
 		this.food_type = food_type;
 	}
 	public Integer getType_id() {

@@ -1,6 +1,7 @@
 package com.ApplicationJ.app;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -16,6 +17,11 @@ public class Aop {
 	@Before("execution(* com.ApplicationJ..*(..))")
 	public void logBefore(JoinPoint joinPoint) {
 		logger.debug("BeforeExecution: "+joinPoint.getSignature().getName());
+	}
+	
+	@After("execution(* com.ApplicationJ..*(..))")
+	public void logAfter(JoinPoint joinPoint) {
+		logger.debug("AfterExecution: "+joinPoint.getSignature().getName());
 	}
 	
 }
