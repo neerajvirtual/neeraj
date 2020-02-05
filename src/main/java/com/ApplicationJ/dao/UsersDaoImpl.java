@@ -29,6 +29,7 @@ public class UsersDaoImpl implements UsersDao {
 	public List<UsersBO> getActiveUsers() {
 		CriteriaBuilder queryBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<UsersBO> criteriaQuery = queryBuilder.createQuery(UsersBO.class);
+		Root<UsersBO> entityRoot = criteriaQuery.from(UsersBO.class);// it is required
 		List<UsersBO> userList = entityManager.createQuery(criteriaQuery).getResultList();
 		return userList;
 	}
