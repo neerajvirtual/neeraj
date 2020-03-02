@@ -40,17 +40,6 @@ public class UsersServiceImpl implements UsersService {
 	
 	public UsersServiceImpl() {
 		super();
-		System.out.println("constructor call 0380");
-	}
-	
-	@PostConstruct
-	public void helloOnce() {
-		System.out.println("0380 post constructor");
-	}
-	
-	@PreDestroy
-	public void hellbye() {
-		System.out.println("0380 destory method called");
 	}
 
 	@Override
@@ -112,9 +101,9 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override
-	public List<UsersTO> getTestList() {
+	public List<UsersTO> getTestGroupByList() {
 		List<UsersTO> usersToList = new ArrayList<UsersTO>();
-		List<UsersBO> usersBoList= usersdao.getTestlList();
+		List<UsersBO> usersBoList= usersdao.getTestGroupBylList();
 		for (UsersBO usersBO : usersBoList) {
 			usersToList.add(modelMapper.map(usersBO, UsersTO.class));
 		}

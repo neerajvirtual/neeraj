@@ -26,12 +26,12 @@ public interface UsersService {
 
 	List<FoodTypeTO> getFoodTypeList();
 
-	List<UsersTO> getTestList();
-
 	List<FoodTO> getFoodList();
 
 	UsersBO updateUser(UsersBO userbo);
 
 	List<UsersTO> getActiveUsersNameEmail();
+
+	List<UsersTO> getTestGroupByList();
 
 }

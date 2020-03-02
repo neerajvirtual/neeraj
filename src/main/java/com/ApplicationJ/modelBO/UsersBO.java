@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -39,6 +40,12 @@ public class UsersBO{
 		this.id = id;
 		this.name = name;
 		this.email = email;
+	}
+	
+	public UsersBO(String name, long updatedBy) {
+		super();
+		this.name = name;
+		this.updatedBy = (int) updatedBy;
 	}
 
 	@Id
@@ -158,5 +165,7 @@ public class UsersBO{
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
+	
+	
 	
 }

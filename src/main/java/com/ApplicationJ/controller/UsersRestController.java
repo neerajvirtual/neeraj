@@ -93,9 +93,9 @@ public class UsersRestController {
 		return new ResponseEntity<ResponseTO>(response, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@RequestMapping(value = "/testGroupBy", method = RequestMethod.GET)
 	public ResponseEntity<?> getTest() throws Exception {
-		List<UsersTO> list = usersservice.getTestList();
+		List<UsersTO> list = usersservice.getTestGroupByList();
 		responseBuilder(200, "Users List Got Successfully", "users", Constant.USR008, list);
 		return new ResponseEntity<ResponseTO>(response, HttpStatus.OK);
 	}

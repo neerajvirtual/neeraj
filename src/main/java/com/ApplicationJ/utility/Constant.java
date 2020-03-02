@@ -4,6 +4,7 @@ public class Constant {
 
 	//home controller
 	public static final String WEl001="Yours Welcome";
+	public static final String WEl002="Current Profile is {0}";
 	
 	//user controller
 	public static final String USR001="Users List Got Successfully";	

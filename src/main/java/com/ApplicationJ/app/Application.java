@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.ApplicationJ.dao")
 @EntityScan(basePackages = "com.ApplicationJ.modelBO")
 public class Application extends SpringBootServletInitializer {
-
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Application.class);
@@ -29,4 +29,5 @@ public class Application extends SpringBootServletInitializer {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+	
 }
